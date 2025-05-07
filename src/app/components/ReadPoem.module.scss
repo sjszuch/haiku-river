@@ -1,0 +1,25 @@
+.readPoem {
+  background-color: #11385b;
+  border-radius: 15px;
+  padding: 1rem;
+  margin: 1rem;
+
+  h2 {
+    border-bottom: 1px solid #fff;
+    margin-bottom: 1rem;
+  }
+}
+
+.haiku {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  background-color: #192221;
+  border-radius: 15px;
+  padding: 1rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
