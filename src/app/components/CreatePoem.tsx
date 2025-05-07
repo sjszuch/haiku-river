@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import styles from './CreatePoem.module.scss';
+import { db } from '../../../firebase/clientApp';
+import { collection, addDoc } from 'firebase/firestore';
+import { useRouter } from 'next/navigation';
 
 const CreatePoem: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -42,7 +45,33 @@ const CreatePoem: React.FC = () => {
       ) : (
         <div className={styles.createPoem}>
           <h2>Create a Haiku</h2>
-          <form className={styles.form}>
+          <form className={styles.form} onSubmit={async (e) => {
+            e.preventDefault();
+            const form = e.target as HTMLFormElement;
+            const title = (form.elements.namedItem('title') as HTMLInputElement).value;
+            const line1 = (form.elements.namedItem('line1') as HTMLInputElement).value;
+            const line2 = (form.elements.namedItem('line2') as HTMLInputElement).value;
+            const line3 = (form.elements.namedItem('line3') as HTMLInputElement).value;
+            const author = (form.elements.namedItem('author') as HTMLInputElement).value;
+            const poemsCollection = collection(db, 'testpoems');
+            const poemData = {
+              title,
+              line1,
+              line2,
+              line3,
+              author,
+            };
+            try {
+              await addDoc(poemsCollection, poemData);
+              alert('Poem created successfully!');
+            } catch (error) {
+              console.error('Error creating poem:', error);
+              alert('Failed to create poem. Please try again.');
+            }
+            form.reset(); // Reset the form after submission
+            toggleExpand(); // Close the form after submission
+          }
+          }>
             <div>
               <label htmlFor="title">Title:</label>
               <input type="text" id="title" name="title" className={styles.input} required />
