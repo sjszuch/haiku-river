@@ -1,8 +1,20 @@
 .topNav {
+  position: sticky;
+  top: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #507dad;
-
+  background-color: rgba(26, 59, 84, 0.8);
+  backdrop-filter: blur(10px);
   padding: 0.5rem 1rem;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-family: "goodlife-serif", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 1.5rem;
 }

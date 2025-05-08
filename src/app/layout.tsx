@@ -24,12 +24,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-      <link rel="stylesheet" href="https://use.typekit.net/ajx6csv.css" />
-      </head>
 
-      <TopNav />
+    <html lang="en">
+          <head>
+    <link rel="stylesheet" href="https://use.typekit.net/ajx6csv.css" />
+    </head>
+
 
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

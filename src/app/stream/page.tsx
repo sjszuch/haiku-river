@@ -5,6 +5,9 @@ import { db } from '../../../firebase/clientApp';
 import { collection, getDocs } from 'firebase/firestore';
 import ReadPoem from '../components/ReadPoem';
 import CreatePoem from '../components/CreatePoem';
+import TopNav from '../components/TopNav';
+import styles from './page.module.scss';
+
 
 interface Poem {
   id: string;
@@ -45,10 +48,15 @@ const HomePage = () => {
 
   return (
     <div>
-        <h1>Create a Poem</h1>
+      
+      <TopNav />
+      
+        <h1 className={styles.sectionTitle}>Write a Poem</h1>
+        <p className={styles.sectionDesc}>The prompt of the month is "Blossom", but feel free to write whatever comes to mind.</p>
+
         <CreatePoem />
 
-      <h1>Read Poems</h1>
+      <h1 className={styles.sectionTitle}>Read Poems</h1>
 
       {loading ? (
         <p>Loading poems...</p>
